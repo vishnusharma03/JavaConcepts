@@ -1,0 +1,10 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/vcs.xml
+/modules.xml
+/misc.xml
+/DSA BootCamp.iml
+./inspectionProfiles
+../out
+../.idea
