@@ -9,11 +9,12 @@ public class Leetcode17 {
 
     public static void main(String[] args) {
         String digits = "23";
-        List<String> ans = letterCombinations(digits);
+        Leetcode17 ref = new Leetcode17();
+        List<String> ans = ref.letterCombinations(digits);
         System.out.println(ans);
     }
 
-    private static List<String> letterCombinations(String digits) {
+    private List<String> letterCombinations(String digits) {
         for (char i = '2'; i <= '9'; i++) {
             map.put(i, new ArrayList<>());
         }
