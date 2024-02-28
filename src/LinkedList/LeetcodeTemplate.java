@@ -1,11 +1,14 @@
-public class LinkedList {
+package LinkedList;
 
-    private Node head;
-    private Node tail;
+public class LeetcodeTemplate {
+    private ListNode head;
     private int size;
-    private void Node() {
+    private ListNode tail;
+
+    private void ListNode(){
         this.size = 0;
     }
+
 
     public void deleteAtPos(int position){
         if (position <=1) {
@@ -17,7 +20,7 @@ public class LinkedList {
             return;
         }
 
-        Node temp = get(position-1);
+        ListNode temp = get(position-1);
         System.out.println("Value Removed: " + temp.next.val);
         temp.next = temp.next.next;
 
@@ -26,8 +29,8 @@ public class LinkedList {
         System.out.println("Size after Deletion: " + size);
     }
 
-    private Node get(int index){
-        Node temp = head;
+    private ListNode get(int index){
+        ListNode temp = head;
         int pos = 1;
         while(index != pos){
             temp = temp.next;
@@ -42,7 +45,7 @@ public class LinkedList {
             return;
         }
 
-        Node temp = get(size-1);
+        ListNode temp = get(size-1);
         System.out.println("Value Removed: " + tail.val);
         tail = temp;
         tail.next = null;
@@ -62,7 +65,7 @@ public class LinkedList {
     }
 
     public void addFirstNode(int val){
-        Node node = new Node(val);
+        ListNode node = new ListNode(val);
         node.next = head;
         head = node;
 
@@ -76,7 +79,7 @@ public class LinkedList {
             addFirstNode(val);
             return;
         }
-        Node temp = new Node(val);
+        ListNode temp = new ListNode(val);
         tail.next = temp;
         tail = temp;
         size++;
@@ -91,38 +94,33 @@ public class LinkedList {
             addLast(val);
             return;
         }
-        Node temp = head;
+        ListNode temp = head;
         for (int i = 0; i < position-1; i++) {
             temp = temp.next;
         }
 
-        Node newNode = new Node(val, temp.next);
+        ListNode newNode = new ListNode(val, temp.next);
         temp.next = newNode;
 
         size++;
     }
 
     public void display(){
-        Node temp = head;
+        ListNode temp = head;
         while (temp != null){
-            System.out.print(temp.val + " ->");
+            System.out.print(temp.val + " -> ");
             temp = temp.next;
         }
         System.out.println("Ended");
         System.out.println("Size: " + size);
     }
 
-    private class Node {
 
-        private int val;
-        private Node next;
-
-        private Node(int val) {
-            this.val = val;
-        }
-        private Node(int val, Node next){
-            this.val = val;
-            this.next = next;
-        }
+    public class ListNode {
+        int val;
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 }

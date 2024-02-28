@@ -22,7 +22,5 @@ public class KKV43 {
 
         System.out.println(a.ordinal());
 
-
-
     }
 }
