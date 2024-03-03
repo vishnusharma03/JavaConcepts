@@ -1,8 +1,8 @@
+package Leetcode;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Leetcode17 {
     static HashMap<Character, List<String>> map = new HashMap<>();
