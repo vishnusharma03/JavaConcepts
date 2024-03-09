@@ -1,6 +1,6 @@
-package BinarySearchTree;
+package AVLTrees;
 
-public class BinarySearchTree {
+public class AVL {
     public class Node {
         private int value;
         private Node left;
@@ -17,7 +17,7 @@ public class BinarySearchTree {
     }
 
     private Node root;
-    public BinarySearchTree() {
+    public AVL() {
 
     }
 
@@ -75,7 +75,61 @@ public class BinarySearchTree {
         }
 
         node.height = Math.max(height(node.left), height(node.right))+1;
+        return rotate(node);
+    }
+
+    public Node rotate(Node node){
+
+        if (height(node.left)- height(node.right) > 1){
+            if (height(node.left.left) - height(node.left.right) > 0){
+                return leftRotate(node);
+            }
+            if (height(node.left.left) - height(node.left.right) < 0){
+                node.left = leftRotate(node.left);
+                return rightRotate(node);
+            }
+        }
+
+        if (height(node.right) - height(node.left) > 1){
+            if (height(node.right.left) - height(node.right.right) > 0){
+                return leftRotate(node);
+            }
+            if (height(node.right.left) - height(node.right.right) < 0){
+                node.right = rightRotate(node.right);
+                return rightRotate(node);
+            }
+        }
         return node;
+    }
+
+
+    // Left & Right Rotation is damn easy, Don't confuse yourself.
+    // Take a pen & paper & balance the AVL Tree.
+    private Node leftRotate(Node node){
+        Node c = node.right;
+        Node t = c.left;
+
+        c.left = node;
+        node.right = t;
+
+        node.height = Math.max(height(node.left),height(node.right)+1);
+        c.height = Math.max(height(c.left),height(c.right)+1);
+
+        return node;
+    }
+
+    private Node rightRotate(Node node) {
+        Node c = node.left;
+        Node t = c.right;
+
+        c.right = node;
+        node.left = t;
+
+        node.height = Math.max(height(node.left),height(node.right)+1);
+        c.height = Math.max(height(c.left),height(c.right)+1);
+
+        return c;
+
     }
 
     public boolean balanced(){

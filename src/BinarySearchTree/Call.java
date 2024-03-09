@@ -9,7 +9,7 @@ public class Call {
 //        Scanner scanner = new Scanner(System.in);
         int[] nums = {1,2,3,4,5,6,7,8};
         BinarySearchTree sv = new BinarySearchTree();
-        sv.populate(nums);
+        sv.populateSorted(nums);
         sv.display();
     }
 }
